@@ -1,18 +1,9 @@
 import knex from 'knex'
 import 'dotenv/config';
+import * as config from '../../knexfile.js';
 
 // create connection
-const myKnex = knex({
-  client: "mysql2",
-  connection: {
-    host: process.env.DB_HOST,
-    port: process.env.DB_PORT,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_NAME,
-  },
-  pool: { min: 0, max: 7 },
-});
+const myKnex = knex(config[process.env.NODE_ENV]);
 
 // Check that the connection works
 myKnex.raw("SELECT VERSION()").then(() => {
