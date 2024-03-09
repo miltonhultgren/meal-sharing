@@ -7,7 +7,7 @@ const myKnex = knex(config[process.env.NODE_ENV]);
 
 // Check that the connection works
 myKnex.raw("SELECT VERSION()").then(() => {
-  console.log(`connection to db successful!`);
+  console.log(`Connection to database successful`);
 });
 
 export default myKnex;
