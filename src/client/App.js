@@ -1,18 +1,29 @@
-import React from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import TestComponent from "./components/TestComponent/TestComponent.js";
+import React, { useState, useEffect } from "react";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
 function App() {
+  const [meals, setMeals] = useState([]);
+
+  useEffect(() => {
+    async function fetchMeals() {
+      const response = await fetch('/api/meals');
+      const meals = await response.json();
+      console.log(meals);
+      setMeals(meals);
+    }
+
+    fetchMeals();
+  }, []);
+
   return (
     <Router>
       <Route exact path="/">
-        <p>test</p>
-      </Route>
-      <Route exact path="/lol">
-        <p>lol</p>
-      </Route>
-      <Route exact path="/test-component">
-        <TestComponent></TestComponent>
+        <div>
+          <h1>
+            Meals:
+          </h1>
+          {meals.map((meal) => <div key={meal.title}>{meal.title}</div>)}
+        </div>
       </Route>
     </Router>
   );
