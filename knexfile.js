@@ -1,7 +1,7 @@
 import 'dotenv/config';
 
 export const development = {
-  client: "mysql2",
+  client: process.env.DB_TYPE,
   connection: {
     host: process.env.DB_HOST,
     port: process.env.DB_PORT,
@@ -13,11 +13,13 @@ export const development = {
 };
 
 export const production = {
-  client: 'postgresql',
+  client: 'postgres',
   connection: {
-    database: 'my_db',
-    user: 'username',
-    password: 'password'
+    host: '',
+    port: 5432,
+    database: 'meal-sharing',
+    user: 'postgres',
+    password: 'postgres-root-password',
   },
   pool: {
     min: 2,
