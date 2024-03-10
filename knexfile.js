@@ -17,9 +17,10 @@ export const production = {
   connection: {
     host: '',
     port: 5432,
-    database: 'meal-sharing',
-    user: 'postgres',
-    password: 'postgres-root-password',
+    database: '',
+    user: '',
+    password: '',
+    ssl: { rejectUnauthorized: false },
   },
   pool: {
     min: 2,
