@@ -8,7 +8,6 @@ function App() {
     async function fetchMeals() {
       const response = await fetch('/api/meals');
       const meals = await response.json();
-      console.log(meals);
       setMeals(meals);
     }
 
